@@ -1,6 +1,6 @@
 # Signal 🎯
 
-> "Ich erkenne das Wesentliche" (Filtering Signal from Noise)
+> Filtering Signal from Noise
 
 A minimalist visual tool designed for cognitive anchoring, noise reduction, and pattern recognition, tailored for systems thinkers, data architects, and strategists.
 
