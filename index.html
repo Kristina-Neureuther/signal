@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal - Systems Thinking & Noise Filter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0f1d; /* Tiefes, edles Dunkelblau */
+            overflow: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            user-select: none;
+        }
+        
+        /* Überschrift oben */
+        .header-section {
+            position: absolute;
+            top: 15%;
+            width: 100%;
+            text-align: center;
+            color: #e0e6ed;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .headline {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .subheadline {
+            display: block;
+            font-size: 1.4rem;
+            color: #8a99ad;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Anleitung unten */
+        .footer-instructions {
+            position: absolute;
+            bottom: 25px;
+            width: 100%;
+            text-align: center;
+            color: #5c697a;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-section">
+    <span class="headline">Ich erkenne das Wesentliche</span>
+    <span class="subheadline">I filter the signal from the noise</span>
+</div>
+
+<div class="footer-instructions">
+    Ignore the chaos. Focus your eyes entirely on the steady golden node.<br>
+    Train your mind to see structure within complexity.
+</div>
+
+<script>
+let noiseParticles = [];
+const numParticles = 140; // Menge des grauen Hintergrund-Rauschens
+let signalAngle = 0;
+let signalSpeed = 0.018; // Fließende, beruhigende Geschwindigkeit für die Schleife
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    
+    // Erzeuge das chaotische graue Hintergrundrauschen
+    for (let i = 0; i < numParticles; i++) {
+        noiseParticles.push({
+            x: random(width),
+            y: random(height),
+            vx: random(-1.5, 1.5),
+            vy: random(-1.5, 1.5),
+            size: random(2.5, 4.5)
+        });
+    }
+}
+
+function draw() {
+    // Ein kleiner Alpha-Wert (35) auf dem dunkelblauen Hintergrund 
+    // sorgt für den wunderschönen, fließenden goldenen Schweifeffekt
+    background(10, 15, 29, 35); 
+    
+    // 1. CHAOS ZEICHNEN (Graue Noise-Punkte)
+    fill(120, 130, 145, 45); // Unaufdringliches, transparentes Grau
+    noStroke();
+    for (let p of noiseParticles) {
+        // Punkte wandern und zittern leicht
+        p.x += p.vx + random(-0.3, 0.3);
+        p.y += p.vy + random(-0.3, 0.3);
+        
+        // Wrap-around: Wenn sie den Bildschirm verlassen, kommen sie gegenüber wieder rein
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+        
+        ellipse(p.x, p.y, p.size, p.size);
+    }
+    
+    // 2. SIGNAL ZEICHNEN (Goldener Unendlichkeits-Punkt)
+    signalAngle += signalSpeed;
+    
+    let centerX = width / 2;
+    let centerY = height * 0.55;
+    
+    // Mathematische Lemniskate (Perfekte Unendlichkeits-Schleife)
+    let scaleFactor = width * 0.32; 
+    let denom = 1 + sin(signalAngle) * sin(signalAngle);
+    let x = centerX + (scaleFactor * cos(signalAngle)) / denom;
+    let y = centerY + (scaleFactor * sin(signalAngle) * cos(signalAngle)) / denom * 1.5; // Leicht vertikal gestreckt für bessere Augenführung
+    
+    // Reines, leuchtendes Gold mit Glow-Effekt
+    fill(255, 215, 0, 25); // Breiter goldener Glow-Schleier
+    ellipse(x, y, 60, 60);
+    
+    fill(255, 215, 0, 60); // Innerer dichterer Glow
+    ellipse(x, y, 40, 40);
+    
+    fill(255, 230, 100); // Heller, kraftvoller goldener Kern
+    ellipse(x, y, 22, 22);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+</body>
+</html>
