@@ -15,55 +15,31 @@
             user-select: none;
         }
         
-        /* Der Textblock oben (alles sauber an einem Ort) */
-        .header-section {
+        /* Die kleine Anleitung oben in der Mitte, exakt an der Position der alten Überschrift */
+        .instructions-top {
             position: absolute;
-            top: 8%;
+            top: 15%;
             width: 100%;
             text-align: center;
-            color: #e0e6ed;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .headline {
-            display: block;
-            font-size: 2.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-shadow: 0 0 20px rgba(255,255,255,0.1);
-        }
-
-        .subheadline {
-            display: block;
-            font-size: 1.4rem;
-            color: #8a99ad;
-            margin-top: 6px;
-            font-style: italic;
-        }
-
-        /* Die Anleitung, jetzt ebenfalls elegant oben integriert */
-        .instructions {
-            display: block;
-            font-size: 0.95rem;
             color: #5c697a;
-            margin-top: 18px;
+            font-size: 0.95rem;
             letter-spacing: 0.5px;
             line-height: 1.5;
+            pointer-events: none;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
-    
-    <span class="instructions">
-        Ignore the chaos. Focus your eyes entirely on the steady golden node.<br>
-        Train your mind to see structure within complexity.
-    </span>
+
+<div class="instructions-top">
+    Ignore the chaos. Focus your eyes entirely on the steady golden node.<br>
+    Train your mind to see structure within complexity.
 </div>
 
 <script>
 let noiseParticles = [];
-const numParticles = 240; // Menge des grauen Hintergrund-Rauschens
+const numParticles = 140; // Menge des grauen Hintergrund-Rauschens
 let signalAngle = 0;
 let signalSpeed = 0.018; // Fließende Geschwindigkeit für die Schleife
 
@@ -105,7 +81,7 @@ function draw() {
     signalAngle += signalSpeed;
     
     let centerX = width / 2;
-    let centerY = height * 0.58; // Etwas nach unten gesetzt, damit Platz für den Text oben ist
+    let centerY = height * 0.55; // Zurück auf der ursprünglichen, perfekt zentrierten Position
     
     // Mathematische Lemniskate (Perfekte Unendlichkeits-Schleife)
     let scaleFactor = width * 0.32; 
