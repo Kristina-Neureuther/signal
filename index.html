@@ -15,10 +15,10 @@
             user-select: none;
         }
         
-        /* Überschrift oben */
+        /* Der Textblock oben (alles sauber an einem Ort) */
         .header-section {
             position: absolute;
-            top: 15%;
+            top: 8%;
             width: 100%;
             text-align: center;
             color: #e0e6ed;
@@ -38,38 +38,34 @@
             display: block;
             font-size: 1.4rem;
             color: #8a99ad;
-            margin-top: 8px;
+            margin-top: 6px;
             font-style: italic;
         }
 
-        /* Anleitung unten */
-        .footer-instructions {
-            position: absolute;
-            bottom: 25px;
-            width: 100%;
-            text-align: center;
-            color: #5c697a;
+        /* Die Anleitung, jetzt ebenfalls elegant oben integriert */
+        .instructions {
+            display: block;
             font-size: 0.95rem;
+            color: #5c697a;
+            margin-top: 18px;
             letter-spacing: 0.5px;
             line-height: 1.5;
-            pointer-events: none;
-            z-index: 10;
         }
     </style>
 </head>
 <body>
-
-
-<div class="footer-instructions">
-    Ignore the chaos. Focus your eyes entirely on the steady golden node.<br>
-    Train your mind to see structure within complexity.
+    
+    <span class="instructions">
+        Ignore the chaos. Focus your eyes entirely on the steady golden node.<br>
+        Train your mind to see structure within complexity.
+    </span>
 </div>
 
 <script>
 let noiseParticles = [];
-const numParticles = 200; // Menge des grauen Hintergrund-Rauschens
+const numParticles = 240; // Menge des grauen Hintergrund-Rauschens
 let signalAngle = 0;
-let signalSpeed = 0.050; // Fließende, beruhigende Geschwindigkeit für die Schleife
+let signalSpeed = 0.018; // Fließende Geschwindigkeit für die Schleife
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -87,19 +83,16 @@ function setup() {
 }
 
 function draw() {
-    // Ein kleiner Alpha-Wert (35) auf dem dunkelblauen Hintergrund 
-    // sorgt für den wunderschönen, fließenden goldenen Schweifeffekt
+    // Ein kleiner Alpha-Wert (35) sorgt für den fließenden goldenen Schweifeffekt
     background(10, 15, 29, 35); 
     
     // 1. CHAOS ZEICHNEN (Graue Noise-Punkte)
-    fill(120, 130, 145, 45); // Unaufdringliches, transparentes Grau
+    fill(120, 130, 145, 45); 
     noStroke();
     for (let p of noiseParticles) {
-        // Punkte wandern und zittern leicht
         p.x += p.vx + random(-0.3, 0.3);
         p.y += p.vy + random(-0.3, 0.3);
         
-        // Wrap-around: Wenn sie den Bildschirm verlassen, kommen sie gegenüber wieder rein
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
@@ -112,22 +105,22 @@ function draw() {
     signalAngle += signalSpeed;
     
     let centerX = width / 2;
-    let centerY = height * 0.55;
+    let centerY = height * 0.58; // Etwas nach unten gesetzt, damit Platz für den Text oben ist
     
     // Mathematische Lemniskate (Perfekte Unendlichkeits-Schleife)
     let scaleFactor = width * 0.32; 
     let denom = 1 + sin(signalAngle) * sin(signalAngle);
     let x = centerX + (scaleFactor * cos(signalAngle)) / denom;
-    let y = centerY + (scaleFactor * sin(signalAngle) * cos(signalAngle)) / denom * 1.5; // Leicht vertikal gestreckt für bessere Augenführung
+    let y = centerY + (scaleFactor * sin(signalAngle) * cos(signalAngle)) / denom * 1.5;
     
-    // Reines, leuchtendes Gold mit Glow-Effekt
-    fill(255, 215, 0, 25); // Breiter goldener Glow-Schleier
+    // Reines Gold mit Glow-Effekt
+    fill(255, 215, 0, 25); // Äußerer Glow
     ellipse(x, y, 60, 60);
     
-    fill(255, 215, 0, 60); // Innerer dichterer Glow
+    fill(255, 215, 0, 60); // Innerer Glow
     ellipse(x, y, 40, 40);
     
-    fill(255, 230, 100); // Heller, kraftvoller goldener Kern
+    fill(255, 230, 100); // Heller Kern
     ellipse(x, y, 22, 22);
 }
 
