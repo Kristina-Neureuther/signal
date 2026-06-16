@@ -20,7 +20,8 @@ By tracking the steady golden signal while ignoring the surrounding gray noise, 
 - **Strategic Contrast:** A deep space-blue backdrop combined with an un-intrusive gray noise spectrum, allowing the golden core node to stand out as a clean focal point.
 
 ### Live Demo
-[Insert your GitHub Pages link here once activated!]
+
+[Click here for Live Demo](https://kristina-neureuther.github.io/signal/)
 
 ### Tech Stack
 - HTML5 Canvas & Vanilla CSS
