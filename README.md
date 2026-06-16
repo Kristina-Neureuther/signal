@@ -9,19 +9,9 @@ In data design and strategic analysis, we are constantly bombarded by raw inform
 
 This tool serves as an active **attention-filtering mechanism**. The canvas simulates a chaotic system filled with random, unpredictable nodes moving in the background. In contrast, a single golden node moves in a perfectly predictable, mathematically sound infinity loop ($\infty$).
 
-By tracking the steady golden signal while ignoring the surrounding gray noise, you train your mind to:
-- **Suppress Cognitive Distractions:** Lower the brain's sensitivity to systemic chaos and random background events.
-- **Isolate Core Dynamics:** Strengthen the ability to track long-term structural trends despite high short-term volatility.
-- **Anchor Focus:** Stabilize mental clarity on the core mission statement: *"Ich erkenne das Wesentliche"* (Isolating high-value signals).
-
-### Functional Design
-- **Lemniscate Geometry:** The signal follows a pure mathematical infinity curve (Lemniscate of Bernoulli), providing an organic, non-linear yet completely deterministic path for fluid eye tracking.
-- **Dynamic Complexity:** Features over 100 autonomous background particles simulating a low-level chaotic field.
-- **Strategic Contrast:** A deep space-blue backdrop combined with an un-intrusive gray noise spectrum, allowing the golden core node to stand out as a clean focal point.
 
 ### Live Demo
-
-[Click here for Live Demo](https://kristina-neureuther.github.io/signal/)
+👉 [**CLICK HERE TO START THE TOOL**](https://kristina-neureuther.github.io/signal/)
 
 ### Tech Stack
 - HTML5 Canvas & Vanilla CSS
