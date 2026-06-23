@@ -4,6 +4,8 @@
 
 A minimalist visual tool designed for cognitive anchoring, noise reduction, and pattern recognition, tailored for systems thinkers, data architects, and strategists.
 
+## Kristina Neureuther – Systems Thinking & Strategy
+
 ### The Systemic Context
 In data design and strategic analysis, we are constantly bombarded by raw information, market fluctuations, and chaotic variables—collectively known as **Noise**. The primary bottleneck in problem-solving isn't the lack of data, but the cognitive strain of filtering out the irrelevant to see the core structure (**Signal**).
 
